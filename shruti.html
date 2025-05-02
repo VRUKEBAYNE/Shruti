@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Shruti</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    #container {
+      max-width: 800px;
+      padding: 40px;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    #container:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      color: #e91e63;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 1s ease-in forwards;
+    }
+
+    p {
+      font-size: 1.25em;
+      color: #444;
+      line-height: 1.7;
+      opacity: 0;
+      transition: opacity 1s ease-in;
+    }
+
+    p.fade-in {
+      opacity: 1;
+    }
+
+    .music {
+      margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container" onclick="showNext()">
+    <h1>Hi Shruti...</h1>
+    <p id="step-text">Click to begin this journey of feelings from Udipta.</p>
+    <div id="music-player" class="music" style="display: none;">
+      <audio id="poem-audio" controls autoplay style="margin-top: 20px;">
+        <source src="Ed Sheeran - Perfect (lyrics)Sped upBaby, I'm dancing in the dark#shorts #perfect #edsheeran.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+    </div>
+  </div>
+
+  <script>
+    const steps = [
+      "From the moment I saw you, something changed.",
+      "Your smile lit up a place in my heart I didn’t know existed.",
+      "With every passing day, I thought about you more.",
+      "Your presence brings peace, like a soft melody in chaos.",
+      "I may not have told you this, but you've become so important to me.",
+      "Every little thing you do leaves me awestruck.",
+      "And so, I wrote this for you...",
+      `<strong>"Her Eyes"</strong><br><br>
+      In fleeting glimpses, she appears,<br>
+      A vision of beauty, through passing years.<br>
+      Her eyes, like stars, shine bright and rare,<br>
+      A celestial spark, beyond compare.<br><br>
+
+      Though time and space may keep us apart,<br>
+      Her presence haunts me, a gentle heart.<br>
+      In festivals' joy, I search for her face,<br>
+      And find solace in a familiar place.<br><br>
+
+      Her voice, a whisper, echoes in my mind,<br>
+      A melody that soothes, a love so kind.<br>
+      Though I may not be her heart's desire,<br>
+      My love for her burns, a pure, sweet fire.<br><br>
+
+      For in her eyes, I see a love so true,<br>
+      A reflection of feelings, forever new.<br>
+      Shruti, my love, you shine so bright,<br>
+      A guiding star, on life's darkest night.<br><br>
+
+      — With love,<br><strong>Udipta</strong>`
+    ];
+
+    let currentStep = 0;
+    const stepText = document.getElementById("step-text");
+    const musicPlayer = document.getElementById("music-player");
+
+    function showNext() {
+      if (currentStep < steps.length) {
+        stepText.classList.remove("fade-in");
+        setTimeout(() => {
+          stepText.innerHTML = steps[currentStep];
+          stepText.classList.add("fade-in");
+
+          if (currentStep === steps.length - 1) {
+            musicPlayer.style.display = "block";
+            const audio = document.getElementById("poem-audio");
+            audio.play();
+          }
+
+          currentStep++;
+        }, 200);
+      }
+    }
+  </script>
+</body>
+</html>
